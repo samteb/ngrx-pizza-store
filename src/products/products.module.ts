@@ -36,8 +36,16 @@ export const ROUTES: Routes = [
     HttpClientModule,
     RouterModule.forChild(ROUTES),
   ],
-  providers: [...fromServices.services],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
-  exports: [...fromContainers.containers, ...fromComponents.components],
+  providers: [
+    ...fromServices.services
+  ],
+  declarations: [
+    ...fromContainers.containers,
+    ...fromComponents.components
+  ],
+  exports: [
+    ...fromContainers.containers,
+    ...fromComponents.components
+  ]
 })
 export class ProductsModule {}
