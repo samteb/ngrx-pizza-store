@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  styleUrls: ['app.component.scss'],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'ngrx-pizza-store';
-}
+export class AppComponent {}

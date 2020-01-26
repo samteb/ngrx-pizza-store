@@ -67,7 +67,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngrx-pizza-store:build"
+            "browserTarget": "ngrx-pizza-store:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
