@@ -10,7 +10,7 @@ import { PizzasService } from '../../services/pizzas.service';
     <div class="products">
       <div class="products__new">
         <a
-          class="btn btn__ok" 
+          class="btn btn__ok"
           routerLink="./new">
           New Pizza
         </a>

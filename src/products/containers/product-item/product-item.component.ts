@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Pizza } from '../../models/pizza.model';
-import { Topping } from '../../models/topping.model';``
+import { Topping } from '../../models/topping.model';
 import { PizzasService, ToppingsService } from '../../services';
 
 @Component({
