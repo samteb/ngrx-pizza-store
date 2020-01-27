@@ -1,12 +1,14 @@
 import * as fromPizzas from '../actions/pizzas.action';
-import { Pizza } from '../../products/models/pizza.model';
+import { Pizza } from '../../models/pizza.model';
 
+// state
 export interface PizzaState {
   data: Pizza[];
   loaded: boolean;
   loading: boolean;
 }
 
+// initial state
 export const initialState: PizzaState = {
   data: [
     {
@@ -122,6 +124,7 @@ export const initialState: PizzaState = {
   loading: false
 };
 
+// reducer
 export function reducer(
   state = initialState,
   action: fromPizzas.PizzasAction
@@ -148,4 +151,9 @@ export function reducer(
 
   return state;
 }
+
+// getters
+export const getPizzas = (state: PizzaState) => state.data;
+export const getPizzasLoading = (state: PizzaState) => state.loading;
+export const getPizzasLoaded = (state: PizzaState) => state.loaded;
 

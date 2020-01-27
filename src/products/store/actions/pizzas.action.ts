@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Pizza } from '../../products/models/pizza.model';
+import { Pizza } from '../../models/pizza.model';
 
 // Load pizzas
 export const LOAD_PIZZAS = '[Products] Load Pizzas';
