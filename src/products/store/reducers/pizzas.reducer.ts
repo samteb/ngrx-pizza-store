@@ -10,116 +10,7 @@ export interface PizzaState {
 
 // initial state
 export const initialState: PizzaState = {
-  data: [
-    {
-      name: 'Blazin\' Inferno',
-      toppings: [
-        {
-          id: 10,
-          name: 'pepperoni'
-        },
-        {
-          id: 9,
-          name: 'pepper'
-        },
-        {
-          id: 4,
-          name: 'chili'
-        },
-        {
-          id: 3,
-          name: 'basil'
-        },
-        {
-          id: 12,
-          name: 'tomato'
-        },
-        {
-          id: 8,
-          name: 'onion'
-        },
-        {
-          id: 6,
-          name: 'mushroom'
-        },
-        {
-          id: 5,
-          name: 'mozzarella'
-        },
-        {
-          id: 1,
-          name: 'anchovy'
-        },
-        {
-          id: 7,
-          name: 'olive'
-        },
-        {
-          id: 11,
-          name: 'sweetcorn'
-        },
-        {
-          id: 2,
-          name: 'bacon'
-        }
-      ],
-      id: 1
-    },
-    {
-      name: 'Seaside Surfin\'',
-      toppings: [
-        {
-          id: 6,
-          name: 'mushroom'
-        },
-        {
-          id: 7,
-          name: 'olive'
-        },
-        {
-          id: 2,
-          name: 'bacon'
-        },
-        {
-          id: 3,
-          name: 'basil'
-        },
-        {
-          id: 1,
-          name: 'anchovy'
-        },
-        {
-          id: 8,
-          name: 'onion'
-        },
-        {
-          id: 9,
-          name: 'pepper'
-        },
-        {
-          id: 5,
-          name: 'mozzarella'
-        },
-        {
-          id: 10,
-          name: 'pepperoni'
-        },
-        {
-          id: 11,
-          name: 'sweetcorn'
-        },
-        {
-          id: 4,
-          name: 'chili'
-        },
-        {
-          id: 12,
-          name: 'tomato'
-        }
-      ],
-      id: 2
-    }
-  ],
+  data: [],
   loaded: false,
   loading: false
 };
@@ -136,10 +27,12 @@ export function reducer(
         loading: true
       };
     case fromPizzas.LOAD_PIZZAS_SUCCESS:
+      const data = action.payload;
       return {
         ...state,
         loading: false,
-        loaded: true
+        loaded: true,
+        data
       };
     case fromPizzas.LOAD_PIZZAS_FAIL:
       return {
