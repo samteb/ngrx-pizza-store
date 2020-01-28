@@ -7,3 +7,4 @@ export const getToppingsEntities = createSelector(getToppingsState, (state: from
 export const getAllToppings = createSelector(getToppingsEntities, entities => Object.keys(entities).map(id => entities[parseInt(id, 10)]));
 export const getToppingsLoading = createSelector(getToppingsState, (state: fromToppings.ToppingsState) => state.loading);
 export const getToppingsLoaded = createSelector(getToppingsState, (state: fromToppings.ToppingsState) => state.loaded);
+export const getSelectedToppings = createSelector(getToppingsState, (state: fromToppings.ToppingsState) => state.selectedToppings);

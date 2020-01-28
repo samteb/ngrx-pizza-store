@@ -8,20 +8,28 @@ export interface ToppingsState {
   };
   loaded: boolean;
   loading: boolean;
+  selectedToppings: number[];
 }
 
 // initial state
 export const initialState: ToppingsState = {
   entities: {},
   loaded: false,
-  loading: false
+  loading: false,
+  selectedToppings: []
 };
 
+// reducer
 export function reducer(
   state = initialState,
   action: fromToppings.ToppingsAction
 ): ToppingsState {
   switch (action.type) {
+    case fromToppings.VISUALISE_TOPPINGS:
+      return {
+        ...state,
+        selectedToppings: action.payload
+      };
     case fromToppings.LOAD_TOPPINGS:
       return {
         ...state,
