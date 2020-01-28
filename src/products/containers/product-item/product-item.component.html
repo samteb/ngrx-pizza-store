@@ -1,0 +1,14 @@
+<div
+  class="product-item">
+  <pizza-form
+    [pizza]="pizza$ | async"
+    [toppings]="toppings"
+    (selected)="onSelect($event)"
+    (create)="onCreate($event)"
+    (update)="onUpdate($event)"
+    (remove)="onRemove($event)">
+    <pizza-display
+      [pizza]="visualise">
+    </pizza-display>
+  </pizza-form>
+</div>
