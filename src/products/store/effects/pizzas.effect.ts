@@ -12,8 +12,7 @@ export class PizzasEffects {
     private pizzaService: fromServices.PizzasService
   ) {}
 
-  @Effect()
-  loadPizzas$ = this.actions$.pipe(
+  @Effect() loadPizzas$ = this.actions$.pipe(
     ofType(pizzaActions.LOAD_PIZZAS),
     switchMap(() => this.pizzaService.getPizzas().pipe(
       map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),

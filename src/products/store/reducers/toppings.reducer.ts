@@ -48,8 +48,3 @@ export function reducer(
 
   return state;
 }
-
-// getters
-export const getToppingEntities = (state: ToppingsState) => state.entities;
-export const getToppingLoading = (state: ToppingsState) => state.loading;
-export const getToppingLoaded = (state: ToppingsState) => state.loaded;
