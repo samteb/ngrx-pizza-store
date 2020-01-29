@@ -31,10 +31,19 @@ export class PizzasEffects {
 
   @Effect() updatePizza$ = this.actions$.pipe(
     ofType(pizzaActions.UPDATE_PIZZA),
-    map((action: pizzaActions.CreatePizza) => action.payload),
+    map((action: pizzaActions.UpdatePizza) => action.payload),
     switchMap(pizza => this.pizzaService.updatePizza(pizza).pipe(
       map(newPizza => new pizzaActions.UpdatePizzaSuccess(newPizza)),
       catchError(error => of(new pizzaActions.UpdatePizzaFail(error)))
+    ))
+  );
+
+  @Effect() deletePizza$ = this.actions$.pipe(
+    ofType(pizzaActions.DELETE_PIZZA),
+    map((action: pizzaActions.DeletePizza) => action.payload),
+    switchMap(pizza => this.pizzaService.removePizza(pizza).pipe(
+      map(() => new pizzaActions.DeletePizzaSuccess(pizza)),
+      catchError(error => of(new pizzaActions.DeletePizzaFail(error)))
     ))
   );
 }
