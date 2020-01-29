@@ -19,4 +19,13 @@ export class PizzasEffects {
       catchError(error => of(new pizzaActions.LoadPizzasFail(error)))
     ))
   );
+
+  @Effect() createPizza$ = this.actions$.pipe(
+    ofType(pizzaActions.CREATE_PIZZA),
+    map((action: pizzaActions.CreatePizza) => action.payload),
+    switchMap(pizza => this.pizzaService.createPizza(pizza).pipe(
+      map(newPizza => new pizzaActions.CreatePizzaSuccess(newPizza)),
+      catchError(error => of(new pizzaActions.CreatePizzaFail(error)))
+    ))
+  );
 }
