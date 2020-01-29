@@ -12,7 +12,8 @@ export class PizzasEffects {
     private pizzaService: fromServices.PizzasService
   ) {}
 
-  @Effect() loadPizzas$ = this.actions$.pipe(
+  @Effect()
+  loadPizzas$ = this.actions$.pipe(
     ofType(pizzaActions.LOAD_PIZZAS),
     switchMap(() => this.pizzaService.getPizzas().pipe(
       map(pizzas => new pizzaActions.LoadPizzasSuccess(pizzas)),
@@ -20,7 +21,8 @@ export class PizzasEffects {
     ))
   );
 
-  @Effect() createPizza$ = this.actions$.pipe(
+  @Effect()
+  createPizza$ = this.actions$.pipe(
     ofType(pizzaActions.CREATE_PIZZA),
     map((action: pizzaActions.CreatePizza) => action.payload),
     switchMap(pizza => this.pizzaService.createPizza(pizza).pipe(
@@ -29,7 +31,8 @@ export class PizzasEffects {
     ))
   );
 
-  @Effect() updatePizza$ = this.actions$.pipe(
+  @Effect()
+  updatePizza$ = this.actions$.pipe(
     ofType(pizzaActions.UPDATE_PIZZA),
     map((action: pizzaActions.UpdatePizza) => action.payload),
     switchMap(pizza => this.pizzaService.updatePizza(pizza).pipe(
@@ -38,7 +41,8 @@ export class PizzasEffects {
     ))
   );
 
-  @Effect() deletePizza$ = this.actions$.pipe(
+  @Effect()
+  deletePizza$ = this.actions$.pipe(
     ofType(pizzaActions.DELETE_PIZZA),
     map((action: pizzaActions.DeletePizza) => action.payload),
     switchMap(pizza => this.pizzaService.removePizza(pizza).pipe(
