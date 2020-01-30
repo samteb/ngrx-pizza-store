@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
-import * as fromStore from '../../store';
 import { Pizza } from '../../models/pizza.model';
 import { Topping } from '../../models/topping.model';
+import * as fromStore from '../../store';
 
 @Component({
   selector: 'product-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['product-item.component.scss'],
-  templateUrl: './product-item.component.html',
+  templateUrl: './product-item.component.html'
 })
 export class ProductItemComponent implements OnInit {
   pizza$: Observable<Pizza>;
