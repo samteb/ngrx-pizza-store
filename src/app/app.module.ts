@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, Inject, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, Router, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ApmService, ApmErrorHandler } from '@elastic/apm-rum-angular';
 
 import { reducers, effects, CustomSerializer } from './store';
 
@@ -39,9 +40,31 @@ export const ROUTES: Routes = [
     {
       provide: RouterStateSerializer,
       useClass: CustomSerializer
+    },
+    {
+      provide: ApmService,
+      useClass: ApmService,
+      deps: [ Router ]
+    },
+    {
+      provide: ErrorHandler,
+      useClass: ApmErrorHandler
     }
   ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(@Inject(ApmService) service: ApmService) {
+    // API is exposed through this apm instance
+    const apm = service.init({
+      serviceName: 'angular-app',
+      serverUrl: 'http://localhost:8200'
+    });
+
+    apm.setUserContext({
+      username: 'foo',
+      id: 'bar'
+    });
+  }
+}

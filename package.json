@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@elastic/apm-rum-angular": "^1.1.0",
     "@ngrx/effects": "^8.6.0",
     "@ngrx/router-store": "^8.6.0",
     "@ngrx/store": "^8.6.0",
